@@ -1,0 +1,63 @@
+dimension	3
+boundary	p p p
+
+atom_style	angle
+bond_style 	fene
+angle_style	harmonic
+pair_style	hybrid/overlay lj/cut 1. gauss 1.
+special_bonds	fene
+neighbor	2.0 bin
+
+read_data	lattice.data
+include		coeffs.def
+pair_modify	shift yes
+
+timestep	0.005
+
+fix		1 all langevin 1.0 1.0 10.0 102
+fix		2 all nve
+
+# ============ define clusters ==========
+# Define clusters based on the proximity of the core atoms:
+group           coreatoms type 1
+
+compute         cluster coreatoms cluster/atom 2.5 # Note: Cutoff cannot be > than gauss rc for pair HH/NN.
+# assigns each atom in the group an ID=cluster_ID
+
+compute         cc1 coreatoms chunk/atom c_cluster compress yes
+# remove redundant cluster_ID-s
+
+compute         clustersize coreatoms property/chunk cc1 count
+# count number of atoms in each chunk
+
+# get the beggest cluster's features
+variable	maxclustersize equal max(c_clustersize)
+
+thermo		1000
+thermo_style	custom step fmax temp pe press density xlo lx ylo ly zlo lz #v_maxclustersize  # Does work
+thermo_style	custom step fmax temp pe press density xlo lx ylo ly zlo lz v_maxclustersize  # Does not work
+
+# Change the box size to reach the required density:
+variable	Lx equal 106.80174626
+variable	Lyz equal 105.96170416457295
+fix		3 all deform 1 x final 0.0 ${Lx} y final 0.0 ${Lyz} z final 0.0 ${Lyz}
+
+#thermo		1   # the last step does not seem to differ from the previous ones
+# last printed step is 1527
+
+thermo		1000  # last printed step is 5000
+
+run		10000
+
+unfix		3   # deform
+unfix		2   # nve
+
+# Set the required pressure:
+variable	Pdamp equal 0.5
+variable	Pval equal 0.004224948
+fix		2 all nph y ${Pval} ${Pval} ${Pdamp} z ${Pval} ${Pval} ${Pdamp} couple yz ptemp 1.0 pchain 100
+
+thermo		1000
+thermo_style	custom step fmax temp pe press density xlo lx ylo ly zlo lz v_maxclustersize  # Does work
+
+run		90000

@@ -1,0 +1,63 @@
+# N-term blob   (N): Rg / Angstrom = 41.8517, Rex / Angstrom = 32.5682
+# C-term blob   (C): Rg / Angstrom = 40.3946, Rex / Angstrom = 24.698
+# Ferritin core (F): Rex / Angstrom = 60
+# Nucleosome    (H): Rex / Angstrom = 50
+# Histone tail  (T): Rg / Angstrom = 8.49706, Rex / Angstrom = 8.73558
+
+# Fundamental lengthscale = 49.3959 Angstrom
+
+# Pair coeffs:
+pair_coeff	1 1 lj/cut	  1.00000000   1.31865998   1.48014578 # NN
+pair_coeff	1 1 gauss	  8.00000000   1.11441486   2.54180835 # 
+pair_coeff	1 2 lj/cut	  1.00000000   1.15932999   1.30130392 # NC
+pair_coeff	1 2 gauss	  8.00000000   1.15425153   2.49756051 # 
+pair_coeff	2 2 lj/cut	  1.00000000   1.00000000   1.12246205 # CC
+pair_coeff	2 2 gauss	  8.00000000   1.19626305   2.45331268 # 
+pair_coeff	1 3 lj/cut	  1.00000000   1.87400496   2.10349944 # FN
+pair_coeff	1 3 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	2 3 lj/cut	  1.00000000   1.71467497   1.92465757 # FC
+pair_coeff	2 3 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	3 3 lj/cut	  1.00000000   2.42934993   2.72685310 # FF
+pair_coeff	3 3 gauss	  0.00000000   0.80000000   5.00000000 # 
+pair_coeff	1 4 lj/cut	  1.00000000   1.67155913   1.87626168 # NH
+pair_coeff	1 4 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	2 4 lj/cut	  1.00000000   1.51222914   1.69741982 # CH
+pair_coeff	2 4 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	3 4 lj/cut	  1.00000000   2.22690411   2.49961534 # FH
+pair_coeff	3 4 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	4 4 lj/cut	  1.00000000   2.02445828   2.27237758 # HH
+pair_coeff	4 4 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	1 5 lj/cut	  1.00000000   0.83617814   0.93857823 # NT
+pair_coeff	1 5 gauss	 50.00000000   3.08003344   1.52893327 # 
+pair_coeff	2 5 lj/cut	  1.00000000   0.67684815   0.75973636 # CT
+pair_coeff	2 5 gauss	  0.00000000   3.26635660   1.48468544 # 
+pair_coeff	3 5 lj/cut	  1.00000000   1.39152312   1.56193189 # FT
+pair_coeff	3 5 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	4 5 lj/cut	  1.00000000   1.18907729   1.33469413 # HT
+pair_coeff	4 5 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	5 5 lj/cut	  1.00000000   0.35369630   0.39701068 # TT
+pair_coeff	5 5 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	1 6 lj/cut	  1.00000000   0.83617814   0.93857823 # NI
+pair_coeff	1 6 gauss	  0.00000000   3.08003344   1.52893327 # 
+pair_coeff	2 6 lj/cut	  1.00000000   0.67684815   0.75973636 # CI
+pair_coeff	2 6 gauss	  0.00000000   3.26635660   1.48468544 # 
+pair_coeff	3 6 lj/cut	  1.00000000   1.39152312   1.56193189 # FI
+pair_coeff	3 6 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	4 6 lj/cut	  1.00000000   1.18907729   1.33469413 # IH
+pair_coeff	4 6 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	5 6 lj/cut	  1.00000000   0.35369630   0.39701068 # TI
+pair_coeff	5 6 gauss	  0.00000000   0.80000000   3.00000000 # 
+pair_coeff	6 6 lj/cut	  1.00000000   0.35369630   0.39701068 # II
+pair_coeff	6 6 gauss	  0.00000000   0.80000000   3.00000000 # 
+
+# Bond coeffs:
+bond_coeff	1    2.88562881   2.31865998   1.00000000   1.15932999 # NC
+bond_coeff	2    1.88163802   3.74800991   1.00000000   1.87400496 # FN
+bond_coeff	3    1.93665390   3.42934993   1.00000000   1.71467497 # FC
+bond_coeff	4    5.00000000   4.04891655   1.00000000   2.02445828 # HH
+bond_coeff	5    5.70432514   2.37815458   1.00000000   1.18907729 # TH
+
+# Angle coeffs:
+angle_coeff	1   10.00000000  90.00000000
+angle_coeff	2   10.00000000  45.00000000
+angle_coeff	3   10.00000000 180.00000000
